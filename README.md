@@ -1,1 +1,1 @@
-Please visit https://senhortavares.com/logseq-utilities/#/page/logseq%20utilities
+Please visit https://senhortavares.com/#/page/logseq%20utilities
