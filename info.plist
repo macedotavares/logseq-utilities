@@ -5682,11 +5682,13 @@ https://github.com/dancromartie/doc-similarity-lite</string>
 	</dict>
 	<key>variablesdontexport</key>
 	<array>
-		<string>graph_path</string>
 		<string>tag_clipping</string>
+		<string>title</string>
+		<string>graph_path</string>
+		<string>tag_journal</string>
 		<string>tag_comment</string>
 		<string>searches_heading</string>
-		<string>tag_journal</string>
+		<string>url</string>
 	</array>
 	<key>version</key>
 	<string>1.0.0</string>
