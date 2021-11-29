@@ -9,7 +9,7 @@ stop_words=["a", "the"]
 tokenizer_func = lambda x: x.strip().split()
 
 graph_path = os.path.expanduser(os.environ['graph_path'])
-pages_folder = os.path.expanduser(os.environ['pages_folder'])
+pages_folder = os.path.expanduser(os.environ['folder_pages'])
 
 rootdir = os.path.join(graph_path,pages_folder)
 target = os.environ['file']
@@ -60,7 +60,7 @@ similar_docs = similarity_obj.get_similar_docs(search_query)
 results = ""
 
 for doc_id, similarity in similar_docs[1:11]:
-	results += "[[" + docs_by_id[doc_id] + "]]\n"
+	results += "\t- [[" + docs_by_id[doc_id] + "]]\n"
 
 
 sys.stdout.write(results)

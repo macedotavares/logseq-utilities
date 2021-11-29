@@ -688,6 +688,18 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>8F221B29-0539-41E4-BA75-F8D2F9C288F6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>C97E84CC-1402-494F-932A-DF07DC26733D</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>43CCDD38-92E7-40F5-BB99-CE19F92941D9</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -1693,6 +1705,55 @@ url="$1"
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>j</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Add journal entry</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>DEB11EA7-3ADC-4C12-9924-07ECB4210F51</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>adduuid</key>
+				<false/>
+				<key>allowemptyfiles</key>
+				<true/>
+				<key>createintermediatefolders</key>
+				<false/>
+				<key>filename</key>
+				<string>{var:graph_path}/{var:folder_journals}/{var:date}.md</string>
+				<key>filetext</key>
+				<string>- ## {var:time} #{var:tag_journal}
+	- {query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>relativepathmode</key>
+				<integer>0</integer>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.writefile</string>
+			<key>uid</key>
+			<string>32C29380-4EBC-4BCA-917C-038BCAB23913</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -1896,6 +1957,28 @@ return theTitle</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>date</key>
+					<string>{date:{var:date_format}}</string>
+					<key>time</key>
+					<string>{date:HH:mm}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>E8AB648D-9478-4F54-AED0-BE6B2B88418E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -1929,7 +2012,7 @@ return theTitle</string>
 				<key>variables</key>
 				<dict>
 					<key>timestamp</key>
-					<string>{date:yyyyMMddHHmmSS}</string>
+					<string>{date:{var:timestamp_format}}</string>
 				</dict>
 			</dict>
 			<key>type</key>
@@ -2072,6 +2155,55 @@ return theTitle</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>n</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Add note</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>22DCCD82-112B-4EB3-A5B9-E0002D82AE88</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>adduuid</key>
+				<false/>
+				<key>allowemptyfiles</key>
+				<true/>
+				<key>createintermediatefolders</key>
+				<false/>
+				<key>filename</key>
+				<string>{var:graph_path}/{var:folder_journals}/{var:date}.md</string>
+				<key>filetext</key>
+				<string>- ## {var:time}
+	- {query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>relativepathmode</key>
+				<integer>0</integer>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.writefile</string>
+			<key>uid</key>
+			<string>79E6287D-937C-4561-9B47-97D517E44A5D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -2187,49 +2319,22 @@ return thePaths</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>j</string>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>Add journal entry</string>
-				<key>withspace</key>
-				<true/>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>date</key>
+					<string>{date:{var:date_format}}</string>
+					<key>time</key>
+					<string>{date:HH:mm}</string>
+				</dict>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>DEB11EA7-3ADC-4C12-9924-07ECB4210F51</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>adduuid</key>
-				<false/>
-				<key>allowemptyfiles</key>
-				<true/>
-				<key>createintermediatefolders</key>
-				<false/>
-				<key>filename</key>
-				<string>{var:graph_path}/{var:folder_journals}/{var:date}.md</string>
-				<key>filetext</key>
-				<string>- ## {var:time} #{var:tag_journal}
-	- {query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>relativepathmode</key>
-				<integer>0</integer>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.writefile</string>
-			<key>uid</key>
-			<string>32C29380-4EBC-4BCA-917C-038BCAB23913</string>
+			<string>78485083-A09F-450F-8A01-771F9C9E2E3F</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2326,7 +2431,7 @@ return thePaths</string>
 				<key>variables</key>
 				<dict>
 					<key>timestamp</key>
-					<string>{date:yyyyMMddHHmmSS}</string>
+					<string>{date:{var:timestamp_format}}</string>
 				</dict>
 			</dict>
 			<key>type</key>
@@ -2372,43 +2477,21 @@ return thePaths</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string>{query}</string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>date</key>
-					<string>{date:{var:date_format}}</string>
-					<key>time</key>
-					<string>{date:HH:mm}</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>E8AB648D-9478-4F54-AED0-BE6B2B88418E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>keyword</key>
-				<string>n</string>
+				<string>t</string>
 				<key>subtext</key>
 				<string></string>
 				<key>text</key>
-				<string>Add note</string>
+				<string>Add task</string>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>22DCCD82-112B-4EB3-A5B9-E0002D82AE88</string>
+			<string>9459DB14-B340-44B0-9462-C96328598C8E</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2425,7 +2508,7 @@ return thePaths</string>
 				<string>{var:graph_path}/{var:folder_journals}/{var:date}.md</string>
 				<key>filetext</key>
 				<string>- ## {var:time}
-	- {query}</string>
+	- TODO {query}</string>
 				<key>ignoredynamicplaceholders</key>
 				<false/>
 				<key>relativepathmode</key>
@@ -2436,7 +2519,7 @@ return thePaths</string>
 			<key>type</key>
 			<string>alfred.workflow.output.writefile</string>
 			<key>uid</key>
-			<string>79E6287D-937C-4561-9B47-97D517E44A5D</string>
+			<string>8CCB67B1-37F2-447E-9E80-AB7862B0CDE2</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2573,7 +2656,7 @@ cp "$file_path" "$graph_path"/"$folder_assets"/"$timestamp"_"$file_name_safe"</s
 			<key>type</key>
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>78485083-A09F-450F-8A01-771F9C9E2E3F</string>
+			<string>8062B0ED-6F93-4CA7-8602-E05B11ABAB00</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2587,7 +2670,7 @@ cp "$file_path" "$graph_path"/"$folder_assets"/"$timestamp"_"$file_name_safe"</s
 				<key>variables</key>
 				<dict>
 					<key>timestamp</key>
-					<string>{date:yyyyMMddHHmmSS}</string>
+					<string>{date:{var:timestamp_format}}</string>
 				</dict>
 			</dict>
 			<key>type</key>
@@ -2790,55 +2873,6 @@ cp "$file_path" "$graph_path"/"$folder_assets"/"$timestamp"_"$file_name_safe"</s
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>keyword</key>
-				<string>t</string>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>Add task</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>9459DB14-B340-44B0-9462-C96328598C8E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>adduuid</key>
-				<false/>
-				<key>allowemptyfiles</key>
-				<true/>
-				<key>createintermediatefolders</key>
-				<false/>
-				<key>filename</key>
-				<string>{var:graph_path}/{var:folder_journals}/{var:date}.md</string>
-				<key>filetext</key>
-				<string>- ## {var:time}
-	- TODO {query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>relativepathmode</key>
-				<integer>0</integer>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.writefile</string>
-			<key>uid</key>
-			<string>8CCB67B1-37F2-447E-9E80-AB7862B0CDE2</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>adduuid</key>
 				<false/>
 				<key>allowemptyfiles</key>
@@ -2890,28 +2924,6 @@ output="$graph_path"/"$folder_assets"/"$file_name"
 			<string>40367E8F-442A-4EFA-9A28-02DD89D89070</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>{query}</string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>date</key>
-					<string>{date:{var:date_format}}</string>
-					<key>time</key>
-					<string>{date:HH:mm}</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>8062B0ED-6F93-4CA7-8602-E05B11ABAB00</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -3318,7 +3330,7 @@ Application('com.runningwithcrayons.Alfred').setConfiguration('title', {
 					<key>time</key>
 					<string>{date:HH:mm}</string>
 					<key>timestamp</key>
-					<string>{date:yyyyMMddHHmmSS}</string>
+					<string>{date:{var:timestamp_format}}</string>
 					<key>uuid</key>
 					<string>{random:uuid}</string>
 				</dict>
@@ -3466,7 +3478,7 @@ Application('com.runningwithcrayons.Alfred').setConfiguration('title', {
 				<string>{var:graph_path}/{var:folder_pages}/{var:title.stripnonalphanumeric}.md</string>
 				<key>filetext</key>
 				<string>source:: {var:url}
-type:: #[[{var:tag_clipping}]]
+tags:: #[[{var:tag_clipping}]]
 
 - {query}</string>
 				<key>ignoredynamicplaceholders</key>
@@ -3523,9 +3535,9 @@ tags:: #[[bookmark]]
 			<key>config</key>
 			<dict>
 				<key>subtext</key>
-				<string>Search Google for {query}</string>
+				<string>…and add search to Logseq journal</string>
 				<key>text</key>
-				<string>Add search to Logseq journal</string>
+				<string>Search the Web for {query}</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.fallback</string>
@@ -4137,33 +4149,6 @@ echo -n "$(cat "$expanded")"</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>adduuid</key>
-				<false/>
-				<key>allowemptyfiles</key>
-				<true/>
-				<key>createintermediatefolders</key>
-				<false/>
-				<key>filename</key>
-				<string>{var:file}</string>
-				<key>filetext</key>
-				<string>	- {var:similar}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>relativepathmode</key>
-				<integer>0</integer>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.writefile</string>
-			<key>uid</key>
-			<string>8F221B29-0539-41E4-BA75-F8D2F9C288F6</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -4179,6 +4164,33 @@ echo -n "$(cat "$expanded")"</string>
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>40F90A4E-72B0-49DF-B10C-DF351C19C05A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>adduuid</key>
+				<false/>
+				<key>allowemptyfiles</key>
+				<true/>
+				<key>createintermediatefolders</key>
+				<false/>
+				<key>filename</key>
+				<string>{var:file}</string>
+				<key>filetext</key>
+				<string>{var:contents}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>relativepathmode</key>
+				<integer>0</integer>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.writefile</string>
+			<key>uid</key>
+			<string>8F221B29-0539-41E4-BA75-F8D2F9C288F6</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -4400,7 +4412,7 @@ echo -n "$(find "$expanded/$folder_pages" -type f -print0 | xargs -0 grep -l "$r
 				<key>variables</key>
 				<dict>
 					<key>wait_message</key>
-					<string>**Searching for related notes.**
+					<string>**Searching for related pages.**
 id:: {var:ref}
 ⏳ This may take a while, depending on how fast your computer is and how many notes there are in your vault.
 ⚠️ Please don't type anything else on this note before the workflow finishes. It will be overwritten, along with this message.</string>
@@ -4479,11 +4491,13 @@ id:: {var:ref}
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>matchstring</key>
-				<string>id:: {var:ref}
+				<string>- **Searching for related pages.**
+  id:: {var:ref}
   ⏳ This may take a while, depending on how fast your computer is and how many notes there are in your vault.
   ⚠️ Please don't type anything else on this note before the workflow finishes. It will be overwritten, along with this message.</string>
 				<key>replacestring</key>
-				<string>{var:similar}</string>
+				<string>## Related pages
+{var:similar}</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.replace</string>
@@ -4541,135 +4555,11 @@ id:: {var:ref}
 		</dict>
 	</array>
 	<key>readme</key>
-	<string># Logseq Utilities
+	<string>Please visit
 
-| ⚠️ PLEASE BACKUP YOUR GRAPH FOLDER ⚠️        |
-|:---------------------------|
-| I can't stress this enough. Bad things can happen when you manipulate files with poorly tested scripts. I've messed up my own graph many times while testing these actions. Dropbox's history and Git were my friends; they should be yours too.    |
+https://senhortavares.com/logseq-utilities/#/page/185192d9-d42c-4be8-8b8e-75aebf385c56
 
-This is an [Alfred](https://alfredapp.com) workflow containing various actions that help you interact with [Logseq](https://logseq.com). 
-
----
-
-## Install
-
-1. Download [this file](https://github.com/macedotavares/obsidian-utilities/releases/download/v2.0.0/Obsidian.Utilities.alfredworkflow).
-2. Open it.
-
----
-
-## Setup
-You must configure the following environment variables before using the workflow:
-
-### folder_journals
-The name of the folder where you keep your daily notes (eg. "Dailies").
-
-### external_editor
-Full path to the app you wish to use as an external editor. The app should be able to handle directories. (eg. "/Applications/Visual Studio Code.app", "~/Applications/Typora.app")
-
-### tag_journal
-The tag that will be appended to your journal entries. Without the octothorpe. (eg. "journal")
-
-### related_ignore_words
-Common and irrelevant words that you wish to exclude from the match criteria. Separated by spaces.
-
-### related_max_results
-How many results to return.
-
-### searches_heading
-The H2 heading that will be created/appended to inside your daily notes. Without the octothorpe. (eg. "Google Searches")
-
-### task_tag
-The tag that will be appended to your task entries. Without the octothorpe. (eg. "task")
-
-### tasks_file
-The filename of the note where you will store your tasks. Without the .md extension. (eg. "Tasks")
-
-### title
-Placeholder for the Clip action. Leave empty.
-
-### url
-Placeholder for the Clip action. Leave empty.
-
-### tasks_heading
-The H2 heading inside your tasks file that tasks will be appended to. Without the octothorpe. (eg. "To-Do").
-
-This allows you to have other headings for differente task groups, like "Done" or "Archived". You can, for example, embed only your current tasks in your daily notes. ![[Tasks#To-Do]]
-
-### vault_name
-The name of your vault (obsidian's root folder name). (eg. "Notes")
-
-### vault_path
-The path to your vault.
-
-Examples:
-
-- "/Users/yourname/Dropbox/Notes"
-- "~/Dropbox/Notes"
-- "/Volumes/NAS/Notes
-
----
-
-## Usage
-
-### Cmd+Shift+L  [search terms] (Global Search &amp; Linking)
-This action goes through all your notes and returns a list of titles, headings and/or blocks that fuzzy match the terms you entered, allowing you to **immediatelly link** to them.
-
-Each kind of result will have a different icon:
-- `[[]]` for note titles
-- `#` for headings
-- `^` for blocks/lines
-
-Insert the link by pressing Enter or double-clicking the result.
-
-Cmd+Enter will open the note file in VS Code. (I'm using an external text editor here because I didn't want to replace the active note, and I couldn't find a way of opening a new pane.)
-As usual in Alfred, pressing shift with a result highlighted will quick-look into it.
-
-**Note:** The shortcut will only work when Obsidian is the active application and the focus is on an editor pane.
-
-### v (no arguments)
-Open vault folder in VS Code
-
-### s [search tearms]
-Search note titles and contents with Alfred.
-Open results in Obsidian or VS Code (Cmd modifier)
-
-### j [journal entry]
-Append journal entry to daily note. Adds timestamped heading and journal tag.
-
-### n [entry]
-Append entry to daily note.
-
-### t [task]
-Appends tasks to tasks file, under the configured heading. Prefixes tasks with date created.
-Transcludes task in the daily note. Adds task tag. Date is ommited.
-
-### Cmd+Shift+R (block referencing helper)
-You can use this when you're already looking at the block you wish to reference, bypassing the need to go elsewhere and rely on Obsidian's autocomplete.
-
-1. Place the cursor at the end of the block you wish to reference
-2. Use the shortcut. A reference code is added at the cursor position.
-3. When the success notification appears, the referencing code is ready to be pasted.
-
-This generates a link, but you can easily turn it into a transclusion by adding "!" before "[[".
-
-### clip (no arguments)
-1. Takes the web page open in Safari's active tab and saves it as a new note in markdown format.
-3. Places a link to it in the daily note.
-
-### Logged Google Search
-Add it in `Features` → `Setup fallback results` → `+` → `Workflow Trigger`
-
-Logs every Google search you perform in Alfred, under the configured `searches_heading` in the daily note.
-
----
-
-## Updates
-I'll fix things occasionally, in small batches. New features usually take longer.
-Check the [Github repository](https://github.com/macedotavares/obsidian-utilities) for updates and source code.
-
-## Feedback
-Found a bug? Want to make a suggestion? [Open an issue](https://github.com/macedotavares/obsidian-utilities/issues/new) or [PM me in the Obsidian forum](https://forum.obsidian.md/u/macedotavares/summary).</string>
+for instructions on how to configure the workflow.</string>
 	<key>uidata</key>
 	<dict>
 		<key>0087C1BE-FCC6-48B2-B4FC-918A686070AF</key>
@@ -4754,7 +4644,7 @@ Found a bug? Want to make a suggestion? [Open an issue](https://github.com/maced
 			<key>xpos</key>
 			<integer>25</integer>
 			<key>ypos</key>
-			<integer>460</integer>
+			<integer>275</integer>
 		</dict>
 		<key>236CB4C2-B88D-4C5F-AF3F-75820CD5E837</key>
 		<dict>
@@ -4806,7 +4696,7 @@ Found a bug? Want to make a suggestion? [Open an issue](https://github.com/maced
 			<key>xpos</key>
 			<integer>300</integer>
 			<key>ypos</key>
-			<integer>305</integer>
+			<integer>95</integer>
 		</dict>
 		<key>375E7C03-7400-49EF-9797-1B94D5395393</key>
 		<dict>
@@ -4897,7 +4787,7 @@ file.html</string>
 			<key>xpos</key>
 			<integer>2440</integer>
 			<key>ypos</key>
-			<integer>2150</integer>
+			<integer>2185</integer>
 		</dict>
 		<key>43E2D379-A68A-41C7-BD7F-0E3EA02473AE</key>
 		<dict>
@@ -5125,7 +5015,7 @@ file.html</string>
 			<key>xpos</key>
 			<integer>190</integer>
 			<key>ypos</key>
-			<integer>495</integer>
+			<integer>310</integer>
 		</dict>
 		<key>79E6287D-937C-4561-9B47-97D517E44A5D</key>
 		<dict>
@@ -5134,7 +5024,7 @@ file.html</string>
 			<key>xpos</key>
 			<integer>290</integer>
 			<key>ypos</key>
-			<integer>465</integer>
+			<integer>280</integer>
 		</dict>
 		<key>7AE84230-3074-48B2-B8EC-FA17A18F69A5</key>
 		<dict>
@@ -5155,9 +5045,9 @@ file.html</string>
 		<key>8062B0ED-6F93-4CA7-8602-E05B11ABAB00</key>
 		<dict>
 			<key>xpos</key>
-			<integer>195</integer>
+			<integer>190</integer>
 			<key>ypos</key>
-			<integer>640</integer>
+			<integer>485</integer>
 		</dict>
 		<key>80C0DED9-81CC-4104-B8AB-70765B806CFC</key>
 		<dict>
@@ -5207,9 +5097,9 @@ file.html</string>
 			<key>colorindex</key>
 			<integer>1</integer>
 			<key>xpos</key>
-			<integer>295</integer>
+			<integer>290</integer>
 			<key>ypos</key>
-			<integer>610</integer>
+			<integer>455</integer>
 		</dict>
 		<key>8DE13E1E-9687-4EE3-A866-E969389284F8</key>
 		<dict>
@@ -5223,9 +5113,9 @@ file.html</string>
 		<key>8F221B29-0539-41E4-BA75-F8D2F9C288F6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>2465</integer>
+			<integer>2440</integer>
 			<key>ypos</key>
-			<integer>1855</integer>
+			<integer>2015</integer>
 		</dict>
 		<key>90638C6A-1096-4C07-8C70-342AED915819</key>
 		<dict>
@@ -5257,9 +5147,9 @@ file.html</string>
 			<key>note</key>
 			<string>Add task</string>
 			<key>xpos</key>
-			<integer>30</integer>
+			<integer>25</integer>
 			<key>ypos</key>
-			<integer>605</integer>
+			<integer>450</integer>
 		</dict>
 		<key>968FA78D-F726-4280-9F23-E617C1F4E677</key>
 		<dict>
@@ -5583,7 +5473,7 @@ Output:
 			<key>xpos</key>
 			<integer>30</integer>
 			<key>ypos</key>
-			<integer>305</integer>
+			<integer>95</integer>
 		</dict>
 		<key>DFB74E8A-2604-4959-A362-6C2AA73D72ED</key>
 		<dict>
@@ -5647,7 +5537,7 @@ Output:
 			<key>xpos</key>
 			<integer>210</integer>
 			<key>ypos</key>
-			<integer>335</integer>
+			<integer>125</integer>
 		</dict>
 		<key>E9E2FC54-A830-451D-9160-41F021313F4B</key>
 		<dict>
@@ -5783,8 +5673,8 @@ https://github.com/dancromartie/doc-similarity-lite</string>
 		<string>comentário</string>
 		<key>tag_journal</key>
 		<string>diário</string>
-		<key>timestamp</key>
-		<string>{date:yyyyMMddHHmmss}</string>
+		<key>timestamp_format</key>
+		<string>yyyyMMddHHmmss</string>
 		<key>title</key>
 		<string>Set theory - Wikipedia</string>
 		<key>url</key>
